@@ -25,11 +25,15 @@ errorCode TaskList::addTask(const Task &t) {
 }
 
 errorCode TaskList::print(void) const {
-    cout << name << endl << endl;
+    cout << name << endl;
     for(int i=0; i<nbTasks; i++) {
         tasks[i].printWithChilds();
         cout << endl;
     }
 
     return(SUCCESS);
+}
+
+Task* TaskList::getTasks(void) {
+    return(tasks);
 }

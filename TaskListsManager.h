@@ -16,9 +16,11 @@ public:
     errorCode runTaskManager(void);
 
 private:
+    void printLists(bool showIndex = false);
     errorCode showMenu(void);
     errorCode mainMenuChoiceHandler(unsigned int c);
     TaskList newListHandler(void);
+    errorCode newTaskHandler(void);
     errorCode addNewList(const TaskList &list);
 
     unsigned int nbLists;

@@ -2,6 +2,31 @@
 #include "Task.h"
 
 
+// Surcharge de l'opérateur >> pour le statut
+istream& operator>>(istream& flux, taskStatus_t& status) {
+    string input;
+    flux >> input; // Lire une chaîne depuis le flux
+
+    if (input == "TODO") {
+        status = TODO;
+    } else if (input == "ONGOING") {
+        status = ONGOING;
+    } else if (input == "DONE") {
+        status = DONE;
+    } else {
+        flux.setstate(ios::failbit); // Marquer une erreur si l'entrée est invalide
+    }
+
+    return flux;
+}
+
+
+istream& operator>>(istream& flux, Date& d) {
+    char sep; // Pour gérer les séparateurs comme '/' ou '-'
+    flux >> d.day >> sep >> d.month >> sep >> d.year;
+    return flux;
+}
+
 ostream& operator<<(ostream& flux, const Task t) {
     cout << "| ";
     switch (t.status)
@@ -111,4 +136,9 @@ errorCode Task::printWithChilds(unsigned int indentLevel) const {
     }
 
     return(SUCCESS);
+}
+
+
+Task** Task::getChilds(void) {
+    return(childTasks);
 }

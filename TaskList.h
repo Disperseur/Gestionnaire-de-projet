@@ -32,6 +32,8 @@ public:
 
     errorCode print(void) const;
 
+    Task* getTasks(void);
+
 private:
     string name;
     unsigned int nbTasks;

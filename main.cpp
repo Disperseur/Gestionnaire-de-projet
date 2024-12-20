@@ -26,9 +26,18 @@ int main()
     // maListe.addTask(maTache2);
     // maListe.print();
     // cout << maListe.getNbTasks();
+
+    // Date maDate;
+    // cin >> maDate;
+    // cout << maDate;
+
+
     TaskListsManager manager;
 
     manager.runTaskManager();
+
+
+    
     
     return(0);
 }

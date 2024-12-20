@@ -2,11 +2,15 @@
 #include <cstring>
 
 #define NB_MAX_CHILDS 20
+#define MAX_RECURSIVE_CHILDS 2
 
 using namespace std;
 
 enum taskStatus_t {TODO=0, ONGOING, DONE};
 enum errorCode {SUCCESS, FAIL};
+
+istream& operator>>(istream& flux, taskStatus_t& status);
+
 
 class Date
 {
@@ -29,6 +33,7 @@ public:
     }
 
     friend ostream& operator<<(ostream& flux, const Date d);
+    friend istream& operator>>(istream& flux, Date& d);
 
 private:
     unsigned int day;
@@ -87,6 +92,8 @@ public:
     string getDescription(void) const;
     Date getDueDate(void) const;
     unsigned int getNbChilds(void) const;
+    Task** getChilds(void);
+    
 
     // mutateurs
     errorCode setStatus(taskStatus_t t);
